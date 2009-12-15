@@ -87,7 +87,7 @@ def _handle_cancel(request, instance=None):
     last page, the user came from. If not given, to the detail-view of
     the object. Last fallback is a redirect to the common success page.
     '''
-    if request.POST.get('_cancel', False):
+    if request.POST.get('submit') == '_cancel':
         if request.GET.get('next', False):
             return HttpResponseRedirect(request.GET.get('next'))
         if instance and hasattr(instance, 'get_absolute_url'):
