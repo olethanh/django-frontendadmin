@@ -2,12 +2,18 @@
 
 <script>
 var form = $("form#form-{{ action }}-{{ model_title|slugify }}");
-     form.submit(function(){
-       $.post("{{ action_url }}", form.serialize(), function(html) {
-		$("#container-{{ action }}-{{ model_title|slugify }}").html(html);
-	   });
-       return false;
-     });
+form.submit(function(){
+  return false;
+});
+
+$("input[type=submit]").each(function(i, k){ 
+  $(k).click(
+    function() {
+      $.post("{{ action_url }}", form.serialize()+"&submit="+$(this).attr("name"), function(html) {
+        $("#container-{{ action }}-{{ model_title|slugify }}").html(html);
+      });
+  });
+});
 </script>
 
 <div id="container-{{ action }}-{{ model_title|slugify }}">
