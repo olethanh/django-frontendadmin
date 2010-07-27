@@ -21,6 +21,7 @@ def frontendadmin_add(context, queryset_object, label=None):
             'app_label': app_label,
             'model_name': model_name,
         }),
+        'has_permission': False,
         'next_link': context['request'].META['PATH_INFO'],
         'label': label,
     }
@@ -49,6 +50,7 @@ def frontendadmin_change(context, model_object, label=None):
             'model_name': model_name,
             'instance_id': model_object.pk,
         }),
+        'has_permission': False,
         'next_link': context['request'].META['PATH_INFO'],
         'label': label,
     }
@@ -77,6 +79,7 @@ def frontendadmin_delete(context, model_object, label=None):
             'model_name': model_name,
             'instance_id': model_object.pk,
         }),
+        'has_permission': False,
         'next_link': context['request'].META['PATH_INFO'],
         'label': label,
     }
