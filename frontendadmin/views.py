@@ -52,7 +52,6 @@ def _get_instance(request, mode_name, app_label, model_name, instance_id=None,
     # Check for permission to add/change/delete this object
     if not check_permission(request, mode_name, app_label, model_name):
         return HttpResponseForbidden('You have no permission to do this!')
-
     try:
         model = get_model(app_label, model_name)
     # Model does not exist
@@ -223,11 +222,11 @@ def change(request, app_label, model_name, instance_id, mode_name='change',
 
 @never_cache
 @login_required
-def delete(request, app_label, model_name, instance_id,
+def delete(request, app_label, model_name, instance_id, mode_name='delete',
                                delete_form=DeleteRequestForm):
 
     # Get model, instance_form and instance for arguments
-    instance_return = _get_instance(request, model_name, app_label, model_name, instance_id)
+    instance_return = _get_instance(request, mode_name, app_label, model_name, instance_id)
     if isinstance(instance_return, HttpResponseForbidden):
         return instance_return
     model, instance_form, instance = instance_return
