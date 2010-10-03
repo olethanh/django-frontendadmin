@@ -121,7 +121,7 @@ Custom Configuration
         'profiles.userprofile': ('user',)
     }
     FRONTEND_FIELDS = {
-        'profiles.userprofile': ('address1','address2','avatar')
+        'profiles.userprofile': ['address1','address2','avatar']
     }
 
    This will include the ``address1``, ``address2``, and ``avatar`` fields
