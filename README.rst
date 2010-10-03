@@ -120,7 +120,7 @@ Custom Configuration
     FRONTEND_EXCLUDES = {
         'profiles.userprofile': ('user',)
     }
-    FRONTEND_INCLUDES = {
+    FRONTEND_FIELDS = {
         'profiles.userprofile': ('address1','address2','avatar')
     }
 
